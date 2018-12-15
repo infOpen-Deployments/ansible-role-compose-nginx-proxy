@@ -1,0 +1,48 @@
+# {{ ansible_managed }}
+
+
+# If servername not managed, return a 444 (Connection closed without response)
+server {
+  listen 443 ssl default_server;
+
+  server_name _;
+  return 444;
+
+  ssl_certificate /etc/nginx/ssl/self-signed.crt;
+  ssl_certificate_key /etc/nginx/ssl/self-signed.key;
+}
+
+
+# Only used to manage status page for exporter
+server {
+  listen 80;
+  server_name nginx;
+
+  location /status/json {
+    vhost_traffic_status_display;
+    vhost_traffic_status_display_format json;
+    access_log off;
+    allow all;
+  }
+
+  error_page 500 502 503 504 /50x.html;
+  location = /50x.html {
+    root /usr/share/nginx/html;
+  }
+}
+
+
+{% for nginx_server in nginx_servers %}
+server {
+  listen {{ nginx_server.listen }};
+  server_name {{ nginx_server.server_name }};
+
+  {{ nginx_server.options | default('') }}
+
+  {% for location in nginx_server.locations %}
+  location {{ location.target }} {
+    {{ location.options }}
+  }
+  {% endfor %}
+}
+{% endfor %}

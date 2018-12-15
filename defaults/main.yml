@@ -1,0 +1,19 @@
+---
+
+# Defaults vars file for nginx-proxy role
+
+# Ansistrano configuration
+nginx_proxy_git_repo: 'git@gitlab.com:/infopen/infrastructure/docker-services/docker-nginx-proxy.git'
+nginx_proxy_git_branch: '1.0.0'
+
+# Docker
+nginx_proxy_networks:
+  - name: 'services'
+nginx_proxy_templates:
+  - src: "templates/dot_env.j2"
+    dest: "{{ ansistrano_release_path.stdout }}/.env"
+  - src: "templates/nginx/default.conf.j2"
+    dest: "{{ ansistrano_release_path.stdout }}/config/nginx/default.conf"
+
+# Reverse proxy server | SSL enpoints servers configurations
+nginx_servers: []
