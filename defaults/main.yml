@@ -4,7 +4,7 @@
 
 # Ansistrano configuration
 nginx_proxy_git_repo: 'git@gitlab.com:/infopen/infrastructure/docker-services/docker-nginx-proxy.git'
-nginx_proxy_git_branch: '1.0.0'
+nginx_proxy_git_branch: '1.2.0'
 
 # Docker
 nginx_proxy_networks:
@@ -17,3 +17,13 @@ nginx_proxy_templates:
 
 # Reverse proxy server | SSL enpoints servers configurations
 nginx_servers: []
+
+# Nginx listen address
+nginx_proxy_service_listen_ip_address: '127.0.0.1'
+
+# Exporter listen address
+nginx_proxy_exporter_listen_ip_address: '127.0.0.1'
+
+# GENERAL
+nginx_proxy_logging_max_file: 2
+nginx_proxy_logging_max_size: '25m'
