@@ -17,7 +17,8 @@ nginx_proxy_templates:
   - src: "templates/nginx/default.conf.j2"
     dest: "{{ ansistrano_release_path.stdout }}/config/nginx/default.conf"
 
-nginx_docker_override_config: {}
+nginx_docker_override_config:
+  version: '3'
 
 # Reverse proxy server | SSL enpoints servers configurations
 nginx_servers: []
