@@ -7,19 +7,19 @@ nginx_proxy_git_repo: 'git@gitlab.com:/infopen/infrastructure/docker-services/do
 nginx_proxy_git_branch: '1.2.0'
 
 # Docker
+nginx_proxy_compose_override:
+  version: '3'
+nginx_proxy_compose_options: ''
+nginx_proxy_compose_path: '/usr/local/bin/docker-compose'
 nginx_proxy_project_name: 'nginx-proxy'
 nginx_proxy_networks:
   - name: 'services'
 nginx_proxy_templates:
   - src: "templates/dot_env.j2"
     dest: "{{ ansistrano_release_path.stdout }}/.env"
-  - src: "templates/docker-compose.override.yml.j2"
-    dest: "{{ ansistrano_release_path.stdout }}/docker-compose.override.yml"
   - src: "templates/nginx/default.conf.j2"
     dest: "{{ ansistrano_release_path.stdout }}/config/nginx/default.conf"
-
-nginx_docker_override_config:
-  version: '3'
+nginx_proxy_volumes: []
 
 # Reverse proxy server | SSL enpoints servers configurations
 nginx_servers: []
