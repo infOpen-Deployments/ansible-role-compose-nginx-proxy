@@ -11,7 +11,7 @@
 
 - name: 'NGINX PROXY | Deploy Docker compose project'
   include_role:
-    name: 'infopen.docker-service__1.0.1'
+    name: "{{ _docker_service_role_full_name }}"
   tags:
     - 'role::nginx-proxy'
     - 'role::nginx-proxy::service'
