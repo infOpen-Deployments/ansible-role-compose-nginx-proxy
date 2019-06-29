@@ -24,6 +24,9 @@ nginx_proxy_volumes: []
 # Reverse proxy server | SSL enpoints servers configurations
 nginx_servers: []
 
+# Nginx upstreams
+nginx_upstreams: []
+
 # Nginx listen address
 nginx_proxy_service_listen_ip_address: '127.0.0.1'
 
