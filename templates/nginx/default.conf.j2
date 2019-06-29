@@ -1,5 +1,10 @@
 # {{ ansible_managed }}
 
+{% for nginx_upstream in nginx_upstreams %}
+upstream {{ upstream.name }} {
+  {{ upstream.options }}
+}
+{% endfor %}
 
 # If servername not managed, return a 444 (Connection closed without response)
 server {
