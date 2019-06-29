@@ -1,8 +1,8 @@
 # {{ ansible_managed }}
 
 {% for nginx_upstream in nginx_upstreams %}
-upstream {{ upstream.name }} {
-  {{ upstream.options }}
+upstream {{ nginx_upstream.name }} {
+  {{ nginx_upstream.options }}
 }
 {% endfor %}
 
