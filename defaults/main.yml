@@ -3,7 +3,7 @@
 # Defaults vars file for nginx-proxy role
 
 # Ansistrano configuration
-nginx_proxy_git_repo: 'git@gitlab.com:/infopen/infrastructure/docker-services/docker-nginx-proxy.git'
+nginx_proxy_git_repo: 'https://github.com/infOpen-Deployments/compose-nginx-proxy.git'
 nginx_proxy_git_branch: '1.2.0'
 
 # Docker
